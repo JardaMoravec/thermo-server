@@ -1,0 +1,29 @@
+<% title = 'Přihlášení' %>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title mb-3 text-center">Přihlášení</h3>
+
+                <% if (error) { %>
+                    <div class="alert alert-danger" role="alert"><%= error %></div>
+                <% } %>
+
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label for="password" class="form-label visually-hidden">Heslo</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Heslo" required autofocus>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Přihlásit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <p class="text-center mt-3 text-muted small">Přihlaste se pro správu aplikace.</p>
+    </div>
+</div>
+
