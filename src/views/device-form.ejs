@@ -1,0 +1,34 @@
+<h1 class="mb-4">Přidat nový teploměr</h1>
+<form action="<%= saveRoute %>" method="POST" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="name" class="form-label">Název</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= device ? device.name : '' %>" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="token" class="form-label">Token</label>
+        <input type="text" class="form-control" id="token" name="token" value="<%= device ? device.token : '' %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Popis</label>
+        <textarea class="form-control" id="description" name="description" rows="2"><%= device ? device.description : '' %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= buttonTitle %></button>
+    <a href="/" class="btn btn-secondary ms-2">Zrušit</a>
+</form>
+<script>
+    // Bootstrap validace formuláře
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>

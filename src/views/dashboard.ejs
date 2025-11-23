@@ -1,0 +1,26 @@
+<h1 class="mb-4">Seznam teploměrů</h1>
+
+<div class="row">
+    <% devices.forEach((device, index) => { %>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h2 class="display-4">
+                        <% if (device.temperature !== null) { %>
+                            <%= device.temperature.toFixed(1) %>°C
+                        <% } else { %>
+                            -
+                        <% } %>
+                    </h2>
+                    <h5 class="card-title mt-3"><%= device.name %></h5>
+                    <p class="card-text"><%= device.description || '-' %></p>
+                </div>
+                <div class="card-footer d-flex justify-content-around">
+                    <a href="/devices/<%= device.id %>" class="btn btn-primary btn-sm">Detail</a>
+                    <a href="/devices/<%= device.id %>/edit" class="btn btn-warning btn-sm">Upravit</a>
+                    <a href="/devices/<%= device.id %>/delete" class="btn btn-danger btn-sm" onclick="return confirm('Opravdu smazat teploměr?');">Smazat</a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>

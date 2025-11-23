@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  backend:
+    build: .
+    image: termo-server/node:22-1
+    container_name: termo-server_backend
+    restart: always
+    working_dir: /usr/src/app
+    volumes:
+      - ./package.json:/usr/src/app/package.json:ro
+      - ./dist:/usr/src/app/dist:rw
+      - ./db-data:/usr/src/app/data:rw
+    ports:
+      - "8044:3000"
+    command: npm run start
