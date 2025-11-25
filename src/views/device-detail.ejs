@@ -14,7 +14,7 @@
         <tr>
             <td><%= m.temperature !== null ? m.temperature.toFixed(1) : '-' %></td>
             <td><%= m.humidity !== null ? m.humidity.toFixed(1) : '-' %></td>
-            <td><%= m.timestamp %></td>
+            <td class="utc-date"><%= m.timestamp.replace(' ', 'T') + 'Z' %></td>
         </tr>
     <% }) %>
     </tbody>

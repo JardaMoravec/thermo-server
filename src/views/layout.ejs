@@ -37,6 +37,20 @@
 <footer class="text-center py-3 mt-5 border-top">
     &copy; 2025 Moje Teploměry
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Najde všechny elementy s třídou "utc-date"
+        const utcElements = document.querySelectorAll('.utc-date');
 
+        utcElements.forEach(el => {
+            const utcText = el.textContent.trim();
+            if (!utcText) return;
+
+            const date = new Date(utcText);
+            if (isNaN(date)) return;
+            el.textContent = date.toLocaleString();
+        });
+    });
+</script>
 </body>
 </html>
